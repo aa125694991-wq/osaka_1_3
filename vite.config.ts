@@ -5,13 +5,12 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vitejs.dev/config/
 export default defineConfig({
   // 重要：這裡的名稱必須跟你的 GitHub Repository 名稱一樣
-  // 例如你的倉庫叫 kyoto-flow，這裡就填 '/kyoto-flow/'
-  base: '/kyoto-flow/', 
+  base: '/osaka_1_3/', 
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['icon.svg'],
       manifest: {
         name: 'KyotoFlow 旅遊規劃',
         short_name: 'KyotoFlow',
@@ -20,23 +19,13 @@ export default defineConfig({
         background_color: '#F2F2F7',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/kyoto-flow/',
-        start_url: '/kyoto-flow/',
+        scope: '/osaka_1_3/',
+        start_url: '/osaka_1_3/',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: 'icon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           }
         ]
