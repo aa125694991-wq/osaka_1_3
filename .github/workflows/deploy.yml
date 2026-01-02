@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'npm'
+          # cache: 'npm'  <-- 移除這一行，解決找不到 lock file 的錯誤
 
       - name: 安裝套件
         run: npm install
