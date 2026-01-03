@@ -2,15 +2,15 @@
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>KyotoFlow - Kyoto Travel Planner</title>
     
-    <!-- PWA / Favicons 
-         Note: We use relative paths ("icon.svg") so Vite can automatically prepend the base path (/osaka_1_3/) during build.
-    -->
+    <!-- PWA / Favicons -->
     <link rel="icon" type="image/svg+xml" href="icon.svg" />
     <link rel="apple-touch-icon" href="icon.svg" />
     <meta name="theme-color" content="#F2F2F7" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -71,13 +71,18 @@
       }
       body {
         -webkit-tap-highlight-color: transparent;
+        /* Prevent bounce scroll on iOS body */
+        overscroll-behavior-y: none;
       }
       /* Safe area spacing for iPhones */
       .pb-safe {
         padding-bottom: env(safe-area-inset-bottom);
       }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top);
+      }
     </style>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -91,7 +96,9 @@
 }
 </script>
 </head>
-  <body class="bg-ios-bg text-gray-900 antialiased selection:bg-ios-blue selection:text-white overflow-hidden">
-    <div id="root"></div>
+  <body class="bg-ios-bg text-gray-900 antialiased selection:bg-ios-blue selection:text-white overflow-hidden h-[100dvh] w-screen">
+    <div id="root" class="h-full w-full"></div>
+    <!-- 這裡是最關鍵的修正：引入 React 入口點 -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
